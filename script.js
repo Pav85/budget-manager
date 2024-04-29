@@ -35,7 +35,7 @@ function displayIncomes() {
     `;
     incomesList.appendChild(item);
   });
-  document.getElementById("totalIncomeValue").textContent = `£${totalIncome}`; // Update total income display
+  document.getElementById("totalIncomeValue").textContent = `£${totalIncome}`;
 }
 
 function displayExpenses() {
@@ -57,7 +57,7 @@ function displayExpenses() {
   });
   document.getElementById(
     "totalExpensesValue"
-  ).textContent = `£${totalExpenses}`; // Update total expenses display
+  ).textContent = `£${totalExpenses}`;
 }
 
 function addIncome() {
@@ -103,4 +103,23 @@ function removeIncome(index) {
 function removeExpense(index) {
   expensesArray.splice(index, 1);
   displayExpenses();
+}
+
+function calculateDisposibleIncome() {
+  const totalIncome = incomesArray.reduce(
+    (acc, income) => acc + income.amount,
+    0
+  );
+  const totalExpenses = expensesArray.reduce(
+    (acc, expense) => acc + expense.amount,
+    0
+  );
+  const disposableIncome = totalIncome - totalExpenses;
+  document.getElementById(
+    "disposableIncomeValue"
+  ).textContent = `£${disposableIncome}`;
+}
+
+function addToSavings() {
+  console.log("add to savings button clicked");
 }
