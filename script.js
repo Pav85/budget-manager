@@ -14,6 +14,8 @@ let expensesArray = [
   { name: "Car Repair", amount: 700, recurring: false },
 ];
 
+let savingsTotal = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
   displayIncomes();
   displayExpenses();
@@ -123,5 +125,14 @@ function calculateDisposableIncome() {
 }
 
 function addToSavings() {
-  console.log("add to savings button clicked");
+  const savingsAmount = parseFloat(prompt("Enter savings amount"));
+  if (isNaN(savingsAmount) || savingsAmount <= 0) {
+    alert("Please enter a valid amount");
+    return;
+  }
+  savingsTotal += savingsAmount;
+  document.getElementById(
+    "savingsValue"
+  ).textContent = `£${savingsTotal.toFixed(2)}`;
+  calculateDisposableIncome();
 }
