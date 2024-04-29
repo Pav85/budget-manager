@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function displayIncomes() {
   let incomesList = document.getElementById("incomes");
+  let totalIncomes = 0;
+
   incomesList.innerHTML = "";
   incomesArray.forEach((income, index) => {
     let item = document.createElement("div");
@@ -36,6 +38,8 @@ function displayIncomes() {
 
 function displayExpenses() {
   let expensesList = document.getElementById("expenses");
+  let totalExpenses = 0;
+
   expensesList.innerHTML = "";
   expensesArray.forEach((expense, index) => {
     let item = document.createElement("div");
