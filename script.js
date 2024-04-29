@@ -19,9 +19,7 @@ let savingsTotal = parseFloat(sessionStorage.getItem("savingsTotal")) || 0;
 document.addEventListener("DOMContentLoaded", () => {
   displayIncomes();
   displayExpenses();
-  document.getElementById(
-    "savingsValue"
-  ).textContent = `£${savingsTotal.toFixed(2)}`;
+  document.getElementById("savingsValue").textContent = `£${savingsTotal}`;
 });
 
 function displayIncomes() {
@@ -33,7 +31,7 @@ function displayIncomes() {
     totalIncome += income.amount;
     let item = document.createElement("div");
     item.innerHTML = `
-      <span class="income-name">${income.name}</span>
+      <span class="income-name">${capitalise(income.name)}</span>
       - £${income.amount}
       ${income.recurring ? " - Recurring" : ""}
       <button onclick="removeIncome(${index})">&#10005;</button>
@@ -54,7 +52,7 @@ function displayExpenses() {
 
     let item = document.createElement("div");
     item.innerHTML = `
-      <span class="expense-name">${expense.name}</span>
+      <span class="expense-name">${capitalise(expense.name)}</span>
       - £${expense.amount}
       ${expense.recurring ? " - Recurring" : ""}
       <button onclick="removeExpense(${index})">&#10005;</button>
@@ -143,4 +141,8 @@ function addToSavings() {
     "savingsValue"
   ).textContent = `£${savingsTotal.toFixed(2)}`;
   calculateDisposableIncome();
+}
+
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
