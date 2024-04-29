@@ -60,9 +60,41 @@ function displayExpenses() {
   ).textContent = `£${totalExpenses}`; // Update total expenses display
 }
 
-function addIncome() {}
+function addIncome() {
+  const incomeName = prompt("Enter income name");
+  const incomeAmount = parseFloat(prompt("Enter income amount"));
+  const incomeRecurring = confirm("Is this income recurring?");
+
+  if (isNaN(incomeAmount)) {
+    alert("Please enter a valid amount");
+    return;
+  }
+
+  const newIncome = {
+    name: incomeName,
+    amount: incomeAmount,
+    recurring: incomeRecurring,
+  };
+
+  incomesArray.push(newIncome);
+  displayIncomes();
+}
 function addExpense() {
-  console.log("add expense button clicked");
+  const expenseName = prompt("Enter expense name");
+  const expenseAmount = parseFloat(prompt("Enter expense amount"));
+  const expenseRecurring = confirm("Is this expense recurring?");
+
+  if (isNaN(expenseAmount)) {
+    alert("Please enter a valid amount");
+    return;
+  }
+  const newExpense = {
+    name: expenseName,
+    amount: expenseAmount,
+    recurring: expenseRecurring,
+  };
+  expensesArray.push(newExpense);
+  displayExpenses();
 }
 function removeIncome() {
   console.log("remove income button clicked");
