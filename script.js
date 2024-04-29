@@ -36,6 +36,7 @@ function displayIncomes() {
     incomesList.appendChild(item);
   });
   document.getElementById("totalIncomeValue").textContent = `£${totalIncome}`;
+  calculateDisposableIncome();
 }
 
 function displayExpenses() {
@@ -58,6 +59,7 @@ function displayExpenses() {
   document.getElementById(
     "totalExpensesValue"
   ).textContent = `£${totalExpenses}`;
+  calculateDisposableIncome();
 }
 
 function addIncome() {
@@ -105,7 +107,7 @@ function removeExpense(index) {
   displayExpenses();
 }
 
-function calculateDisposibleIncome() {
+function calculateDisposableIncome() {
   const totalIncome = incomesArray.reduce(
     (acc, income) => acc + income.amount,
     0
