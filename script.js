@@ -1,4 +1,4 @@
-let incomesArray = [
+let incomesArray = JSON.parse(sessionStorage.getItem("incomesArray")) || [
   { name: "Salary", amount: 2000, recurring: true },
   { name: "Side Hustle", amount: 500, recurring: true },
   { name: "Bonus", amount: 1000, recurring: false },
@@ -6,7 +6,7 @@ let incomesArray = [
   { name: "Passive Income", amount: 200, recurring: false },
 ];
 
-let expensesArray = [
+let expensesArray = JSON.parse(sessionStorage.getItem("expensesArray")) || [
   { name: "Rent", amount: 800, recurring: true },
   { name: "Food", amount: 400, recurring: true },
   { name: "Utilities", amount: 100, recurring: true },
