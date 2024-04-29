@@ -96,9 +96,11 @@ function addExpense() {
   expensesArray.push(newExpense);
   displayExpenses();
 }
-function removeIncome() {
-  console.log("remove income button clicked");
+function removeIncome(index) {
+  incomesArray.splice(index, 1);
+  displayIncomes();
 }
-function removeExpense() {
-  console.log("remove expense button clicked");
+function removeExpense(index) {
+  expensesArray.splice(index, 1);
+  displayExpenses();
 }
