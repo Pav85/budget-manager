@@ -13,3 +13,40 @@ let expensesArray = [
   { name: "Car Insurance", amount: 200, recurring: false },
   { name: "Car Repair", amount: 700, recurring: false },
 ];
+
+document.addEventListener("DOMContentLoaded", () => {
+  displayIncomes();
+  displayExpenses();
+});
+
+function displayIncomes() {
+  let incomesList = document.getElementById("incomes");
+  incomesList.innerHTML = "";
+  incomesArray.forEach((income) => {
+    incomesList.innerHTML += `
+    <li class="income-item">
+      <span class="income-name">${income.name}</span>
+      <span class="income-amount"> - £${income.amount}</span>
+      <span class="income-recurring">${
+        income.recurring ? "- Recurring payment" : ""
+      }</span>
+    </li>
+    `;
+  });
+}
+
+function displayExpenses() {
+  let expensesList = document.getElementById("expenses");
+  expensesList.innerHTML = "";
+  expensesArray.forEach((expense) => {
+    expensesList.innerHTML += `
+    <li class="expense-item">
+      <span class="expense-name">${expense.name}</span>
+      <span class="expense-amount"> - £${expense.amount}</span>
+      <span class="expense-recurring">${
+        expense.recurring ? "- Recurring expense" : ""
+      }</span>
+    </li>
+    `;
+  });
+}
