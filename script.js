@@ -19,6 +19,9 @@ let savingsTotal = parseFloat(sessionStorage.getItem("savingsTotal")) || 0;
 document.addEventListener("DOMContentLoaded", () => {
   displayIncomes();
   displayExpenses();
+  document.getElementById(
+    "savingsValue"
+  ).textContent = `£${savingsTotal.toFixed(2)}`;
 });
 
 function displayIncomes() {
@@ -135,6 +138,7 @@ function addToSavings() {
     return;
   }
   savingsTotal += savingsAmount;
+  sessionStorage.setItem("savingsTotal", savingsTotal);
   document.getElementById(
     "savingsValue"
   ).textContent = `£${savingsTotal.toFixed(2)}`;
