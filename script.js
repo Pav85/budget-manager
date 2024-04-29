@@ -14,7 +14,7 @@ let expensesArray = [
   { name: "Car Repair", amount: 700, recurring: false },
 ];
 
-let savingsTotal = 0;
+let savingsTotal = parseFloat(sessionStorage.getItem("savingsTotal")) || 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   displayIncomes();
@@ -81,6 +81,7 @@ function addIncome() {
   };
 
   incomesArray.push(newIncome);
+  sessionStorage.setItem("incomesArray", JSON.stringify(incomesArray));
   displayIncomes();
 }
 function addExpense() {
@@ -98,14 +99,17 @@ function addExpense() {
     recurring: expenseRecurring,
   };
   expensesArray.push(newExpense);
+  sessionStorage.setItem("expensesArray", JSON.stringify(expensesArray));
   displayExpenses();
 }
 function removeIncome(index) {
   incomesArray.splice(index, 1);
+  sessionStorage.setItem("incomesArray", JSON.stringify(incomesArray));
   displayIncomes();
 }
 function removeExpense(index) {
   expensesArray.splice(index, 1);
+  sessionStorage.setItem("expensesArray", JSON.stringify(expensesArray));
   displayExpenses();
 }
 

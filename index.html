@@ -8,32 +8,39 @@
   </head>
   <body id="body">
     <h1>Budget Manager</h1>
-    <div id="incomesSection">
-      <h2>Incomes</h2>
-      <div id="incomes"></div>
-      <div id="totalIncome">
-        <h3>Total Income</h3>
-        <p id="totalIncomeValue">£0</p>
+    <div id="itemsContainer">
+      <div id="incomesSection">
+        <h2>Incomes</h2>
+        <div id="incomes"></div>
+        <div id="totalIncome">
+          <h3>Total Income</h3>
+          <p id="totalIncomeValue">£0</p>
+        </div>
+        <button id="addIncome" onclick="addIncome()">Add Income</button>
       </div>
-      <button id="addIncome" onclick="addIncome()">Add Income</button>
-    </div>
-    <div id="expensesSection">
-      <h2>Expenses</h2>
-      <div id="expenses"></div>
-      <div id="totalExpenses">
-        <h3>Total Expenses</h3>
-        <p id="totalExpensesValue">£0</p>
+      <div id="expensesSection">
+        <h2>Expenses</h2>
+        <div id="expenses"></div>
+        <div id="totalExpenses">
+          <h3>Total Expenses</h3>
+          <p id="totalExpensesValue">£0</p>
+        </div>
+        <button id="addExpense" onclick="addExpense()">Add Expense</button>
       </div>
-      <button id="addExpense" onclick="addExpense()">Add Expense</button>
-    </div>
-    <div id="disposableIncome">
-      <h3>Disposable Income</h3>
-      <p id="disposableIncomeValue">£0</p>
-    </div>
-    <div id="savings">
-      <h3>Savings</h3>
-      <p id="savingsValue">£0</p>
-      <button id="addToSavings" onclick="addToSavings()">Add to savings</button>
+
+      <div id="totalAndSavings">
+        <div id="disposableIncome">
+          <h3>Disposable Income</h3>
+          <p id="disposableIncomeValue">£0</p>
+        </div>
+        <div id="savings">
+          <h3>Savings</h3>
+          <p id="savingsValue">£0</p>
+          <button id="addToSavings" onclick="addToSavings()">
+            Add to savings
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
