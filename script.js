@@ -21,36 +21,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function displayIncomes() {
   let incomesList = document.getElementById("incomes");
-  let totalIncome = 0;
-
   incomesList.innerHTML = "";
-  incomesArray.forEach((income) => {
-    incomesList.innerHTML += `
-    <li class="income-item">
+  incomesArray.forEach((income, index) => {
+    let item = document.createElement("div");
+    item.innerHTML = `
       <span class="income-name">${income.name}</span>
-      <span class="income-amount"> - £${income.amount}</span>
-      <span class="income-recurring">${
-        income.recurring ? "- Recurring payment" : ""
-      }</span>
-    </li>
+      - £${income.amount}
+      ${income.recurring ? " - Recurring" : ""}
+      <button onclick="removeIncome(${index})">&#10005</button>
     `;
+    incomesList.appendChild(item);
   });
 }
 
 function displayExpenses() {
   let expensesList = document.getElementById("expenses");
-  let totalExpenses = 0;
-
   expensesList.innerHTML = "";
-  expensesArray.forEach((expense) => {
-    expensesList.innerHTML += `
-    <li class="expense-item">
+  expensesArray.forEach((expense, index) => {
+    let item = document.createElement("div");
+    item.innerHTML = `
       <span class="expense-name">${expense.name}</span>
-      <span class="expense-amount"> - £${expense.amount}</span>
-      <span class="expense-recurring">${
-        expense.recurring ? "- Recurring expense" : ""
-      }</span>
-    </li>
+      - £${expense.amount}
+      ${expense.recurring ? " - Recurring" : ""}
+      <button onclick="removeExpense(${index})">&#10005</button>
     `;
+    expensesList.appendChild(item);
   });
+}
+
+function addIncome() {
+  console.log("add income button clicked");
+}
+function addExpense() {
+  console.log("add expense button clicked");
+}
+function removeIncome() {
+  console.log("remove income button clicked");
+}
+function removeExpense() {
+  console.log("remove expense button clicked");
 }
