@@ -21,19 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function displayIncomes() {
   let incomesList = document.getElementById("incomes");
-  let totalIncomes = 0;
+  let totalIncome = 0;
 
   incomesList.innerHTML = "";
   incomesArray.forEach((income, index) => {
+    totalIncome += income.amount;
     let item = document.createElement("div");
     item.innerHTML = `
       <span class="income-name">${income.name}</span>
       - £${income.amount}
       ${income.recurring ? " - Recurring" : ""}
-      <button onclick="removeIncome(${index})">&#10005</button>
+      <button onclick="removeIncome(${index})">&#10005;</button>
     `;
     incomesList.appendChild(item);
   });
+  document.getElementById("totalIncomeValue").textContent = `£${totalIncome}`; // Update total income display
 }
 
 function displayExpenses() {
@@ -42,20 +44,23 @@ function displayExpenses() {
 
   expensesList.innerHTML = "";
   expensesArray.forEach((expense, index) => {
+    totalExpenses += expense.amount;
+
     let item = document.createElement("div");
     item.innerHTML = `
       <span class="expense-name">${expense.name}</span>
       - £${expense.amount}
       ${expense.recurring ? " - Recurring" : ""}
-      <button onclick="removeExpense(${index})">&#10005</button>
+      <button onclick="removeExpense(${index})">&#10005;</button>
     `;
     expensesList.appendChild(item);
   });
+  document.getElementById(
+    "totalExpensesValue"
+  ).textContent = `£${totalExpenses}`; // Update total expenses display
 }
 
-function addIncome() {
-  console.log("add income button clicked");
-}
+function addIncome() {}
 function addExpense() {
   console.log("add expense button clicked");
 }
