@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f4f4f9;
+  background-color: #edf2f7;
   color: #333;
   margin: 0;
   padding: 20px;
@@ -14,17 +14,67 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: #4a5568;
   text-align: center;
   margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h2,
+h3 {
+  color: #2d3748;
+  margin-bottom: 3px;
+  margin-top: 5px;
 }
 
 #itemsContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  max-width: 800px;
+  gap: 20px;
+  width: 80%;
+  max-width: 1000px;
   margin: 30px auto;
+}
+
+#incomesSection,
+#expensesSection,
+#totalAndSavings {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px #d1d9e6, -10px -10px 30px #ffffff;
+  padding: 20px;
+  width: 40%;
+}
+
+div[id$="Section"] div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 8px 8px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 5px 20px #c2c8d1;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #2c669b;
+  box-shadow: 2px 2px 15px #b2b8c1;
+}
+
+.income-name,
+.expense-name {
+  font-weight: bold;
 }
 
 #totalAndSavings {

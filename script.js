@@ -1,3 +1,5 @@
+// global variables
+// incomes array stored in session storage or default incomes array
 let incomesArray = JSON.parse(sessionStorage.getItem("incomesArray")) || [
   { name: "Salary", amount: 2000, recurring: true },
   { name: "Side Hustle", amount: 500, recurring: true },
@@ -6,6 +8,7 @@ let incomesArray = JSON.parse(sessionStorage.getItem("incomesArray")) || [
   { name: "Passive Income", amount: 200, recurring: false },
 ];
 
+// expenses array stored in session storage or default expenses array
 let expensesArray = JSON.parse(sessionStorage.getItem("expensesArray")) || [
   { name: "Rent", amount: 800, recurring: true },
   { name: "Food", amount: 400, recurring: true },
@@ -13,7 +16,7 @@ let expensesArray = JSON.parse(sessionStorage.getItem("expensesArray")) || [
   { name: "Car Insurance", amount: 200, recurring: false },
   { name: "Car Repair", amount: 700, recurring: false },
 ];
-
+// total of savings stored in session storage or 0
 let savingsTotal = parseFloat(sessionStorage.getItem("savingsTotal")) || 0;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -136,11 +139,30 @@ function addToSavings() {
     return;
   }
   savingsTotal += savingsAmount;
-  sessionStorage.setItem("savingsTotal", savingsTotal);
+  sessionStorage.setItem("savingsTotal", savingsTotal.toFixed(2));
   document.getElementById(
     "savingsValue"
   ).textContent = `£${savingsTotal.toFixed(2)}`;
+
   calculateDisposableIncome();
+
+  const totalIncome = incomesArray.reduce(
+    (acc, income) => acc + income.amount,
+    0
+  );
+  const totalExpenses = expensesArray.reduce(
+    (acc, expense) => acc + expense.amount,
+    0
+  );
+  const disposableIncome = totalIncome - totalExpenses - savingsTotal;
+
+  document.getElementById(
+    "disposableIncomeValue"
+  ).textContent = `£${disposableIncome}`;
+
+  alert(
+    `After saving £${savingsAmount}, you have £${disposableIncome} of disposable income left.`
+  );
 }
 
 function capitalise(string) {
