@@ -151,6 +151,7 @@ function addToSavings() {
     alert("Please enter a valid amount");
     return;
   }
+
   savingsTotal += savingsAmount;
   sessionStorage.setItem("savingsTotal", savingsTotal.toFixed(2));
   document.getElementById(
