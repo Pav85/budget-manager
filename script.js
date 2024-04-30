@@ -19,12 +19,14 @@ let expensesArray = JSON.parse(sessionStorage.getItem("expensesArray")) || [
 // total of savings stored in session storage or 0
 let savingsTotal = parseFloat(sessionStorage.getItem("savingsTotal")) || 0;
 
+// when the page loads, display the incomes and expenses
 document.addEventListener("DOMContentLoaded", () => {
   displayIncomes();
   displayExpenses();
   document.getElementById("savingsValue").textContent = `£${savingsTotal}`;
 });
 
+// functction that displays the incomes
 function displayIncomes() {
   let incomesList = document.getElementById("incomes");
   let totalIncome = 0;
@@ -45,6 +47,7 @@ function displayIncomes() {
   calculateDisposableIncome();
 }
 
+// function that displays the expenses
 function displayExpenses() {
   let expensesList = document.getElementById("expenses");
   let totalExpenses = 0;
@@ -68,6 +71,7 @@ function displayExpenses() {
   calculateDisposableIncome();
 }
 
+// function that adds an income after clicking the add income button
 function addIncome() {
   const incomeName = prompt("Enter income name");
   const incomeAmount = parseFloat(prompt("Enter income amount"));
@@ -88,6 +92,8 @@ function addIncome() {
   sessionStorage.setItem("incomesArray", JSON.stringify(incomesArray));
   displayIncomes();
 }
+
+// function that adds an expense after clicking the add expense button
 function addExpense() {
   const expenseName = prompt("Enter expense name");
   const expenseAmount = parseFloat(prompt("Enter expense amount"));
@@ -106,17 +112,22 @@ function addExpense() {
   sessionStorage.setItem("expensesArray", JSON.stringify(expensesArray));
   displayExpenses();
 }
+
+// function that removes an income after clicking the remove income button
 function removeIncome(index) {
   incomesArray.splice(index, 1);
   sessionStorage.setItem("incomesArray", JSON.stringify(incomesArray));
   displayIncomes();
 }
+
+// function that removes an expense after clicking the remove expense button
 function removeExpense(index) {
   expensesArray.splice(index, 1);
   sessionStorage.setItem("expensesArray", JSON.stringify(expensesArray));
   displayExpenses();
 }
 
+// function that calculates the disposable income
 function calculateDisposableIncome() {
   const totalIncome = incomesArray.reduce(
     (acc, income) => acc + income.amount,
@@ -132,6 +143,8 @@ function calculateDisposableIncome() {
   ).textContent = `£${disposableIncome}`;
 }
 
+// function that adds savings after clicking the add savings button and updates the savings total
+// and updates the disposable income
 function addToSavings() {
   const savingsAmount = parseFloat(prompt("Enter savings amount"));
   if (isNaN(savingsAmount) || savingsAmount <= 0) {
@@ -165,6 +178,7 @@ function addToSavings() {
   );
 }
 
+// function that capitalises the first letter of a string
 function capitalise(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
