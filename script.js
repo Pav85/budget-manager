@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("savingsValue").textContent = `£${savingsTotal}`;
 });
 
-// functction that displays the incomes
+// function that displays the incomes
 function displayIncomes() {
   let incomesList = document.getElementById("incomes");
   let totalIncome = 0;
